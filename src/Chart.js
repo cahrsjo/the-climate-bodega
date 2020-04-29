@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Doughnut } from 'react-chartjs-2';
+import './Chart.css';
 
 const data = {
     datasets: [{
@@ -27,9 +28,7 @@ export class Chart extends Component {
  
   render() {
     return (
-      <div
-        style={{ width: "100vw", height: "100vh", cursor: "grab", paddingTop: '6vw' }}
-      >
+      <div className="chartWrapper">
         <Doughnut
           ref={this.chartReference}
           data={data}
