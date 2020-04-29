@@ -11,7 +11,35 @@ import {
   Link
 } from "react-router-dom";
 
+const INGRESS_URL = 'https://ingress.dev.dazzl.io/bc83c830-8a19-11ea-acc0-9b8d5e2cb83a/get';
+
 export class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    }
+  }
+
+  componentDidMount() {
+    // Fetch data and set state here
+    this.fetchData();
+  }
+
+  fetchData = async() => {
+    return await fetch(INGRESS_URL, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Basic '+btoa('climatebodega:yolo123'),
+      },
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log({data});
+    });
+  }
+
   render() {
     const TreesElement = () => {
       let pixels = 50;
