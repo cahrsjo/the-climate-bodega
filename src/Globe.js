@@ -10,17 +10,12 @@ export class Globe extends Component {
   }
 
   componentWillUnmount() {
+    mesh = undefined;
+    moonMesh = undefined;
+    textMesh = undefined;
     this.stop();
     this.mount.removeChild(this.renderer.domElement);
     this.controls.dispose();
-  }
-
-  componentDidUpdate() {
-    this.init();
-  }
-
-  shouldComponentUpdate() {
-    return true;
   }
 
   init = () => {
@@ -135,13 +130,13 @@ export class Globe extends Component {
       metalness: 0,
       color: 'hotpink'
     });
-    const fontGeometry = new THREE.TextGeometry( 'SAVE THE PLANET\n     #FEDEX2020\n       #CORONA', {
+    const fontGeometry = new THREE.TextGeometry( 'SAVE THE PLANET\n\n       #FEDEX12\n\n       #CORONA', {
       font: font,
       size: 0.1,
       height: 0.01,
     });
     textGroup = new THREE.Group();
-    textMesh = new THREE.Mesh( fontGeometry, mat );
+    textMesh = new THREE.Mesh(fontGeometry, mat);
     textMesh.position.fromArray([ -0.7, 0, 1.5])
     textGroup.add(textMesh)
     scene.add(textGroup);
