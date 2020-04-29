@@ -21,10 +21,10 @@ export class App extends Component {
               <Link to="/">Home</Link>
             </div>
             <div>
-              <Link to="/globe"><span role="img" aria-label="globe">🌍</span></Link>
+              <Link to="/chart"><span aria-label="chart">Chart</span></Link>
             </div>
             <div>
-              <Link to="/chart"><span aria-label="chart">Chart</span></Link>
+              <Link to="/globe"><span role="img" aria-label="globe">🌍</span></Link>
             </div>
           </nav>
   

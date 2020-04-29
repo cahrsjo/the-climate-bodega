@@ -1,7 +1,16 @@
 .wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
     width: 100vw;
     height: 100vh;
+}
+
+.wrapper > img {
+    height: 5vh;
+    transition: height 2s ease-in-out;
+}
+
+.wrapper > img:hover {
+    height: 20vh;
 }
