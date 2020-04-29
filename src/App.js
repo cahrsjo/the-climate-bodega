@@ -13,10 +13,35 @@ import {
 
 export class App extends Component {
   render() {
+    const TreesElement = () => {
+      let pixels = 50;
+      let images = [];
+      for (let index = 0; index < 10; index++) {
+        pixels += Math.random() * (100 - 15) + 15;
+        if (index === 5) pixels += 800;
+        images.push(
+          <img
+            key={index}
+            style={{
+              height: '2.5em',
+              position: 'absolute',
+              top: '43px',
+              left: `${pixels}px`,
+            }}
+            src="./images/3419927.svg"
+            alt="tree"
+          />
+        )
+      }
+      return images;
+    }
     return (
       <Router>
         <div>
           <nav className="navigation">
+            <div>
+              {TreesElement()}              
+            </div>
             <div>
               <Link to="/">Home</Link>
             </div>
@@ -27,9 +52,7 @@ export class App extends Component {
               <Link to="/globe"><span role="img" aria-label="globe">🌍</span></Link>
             </div>
           </nav>
-  
-          {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
+
           <Switch>
             <Route path="/globe">
               <Globe />

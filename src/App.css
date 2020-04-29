@@ -1,11 +1,12 @@
 .navigation {
+    z-index: 1;
     display: flex;
     width: 100vw;
     justify-content: center;
     padding: 20px 0;
     position: absolute;
     background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    background: radial-gradient(circle, rgb(0, 78, 167) 0%, rgb(107, 146, 255) 100%);
 }
 
 .navigation > div {

@@ -1,4 +1,43 @@
 .wrapper {
+    background-image: url('./office.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contents {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: monospace;
+}
+
+.emojis {
+    flex-direction: row;
+}
+
+.contents > div > span {
+    font-size: 100px;
+    margin: 0 20px;
+}
+
+.title {
+    text-transform: uppercase;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.phrase {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.imgWrapper {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
@@ -6,11 +45,12 @@
     height: 100vh;
 }
 
-.wrapper > img {
+.imgWrapper > img {
     height: 5vh;
-    transition: height 2s ease-in-out;
+    transition: height 1s ease-in-out;
+    z-index: 1;
 }
 
-.wrapper > img:hover {
-    height: 20vh;
+.imgWrapper > img:hover {
+    height: 50vh;
 }
