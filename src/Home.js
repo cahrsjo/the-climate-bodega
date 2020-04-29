@@ -10,8 +10,8 @@ export default function Home() {
                     <span role="img" aria-label="chart">➡️</span>
                     <span role="img" aria-label="chart">📊</span>
                 </div>
-                <h1 className="title">Welcome to the Climate Bodega</h1>
-                <div className="phrase">Where climate data comes to life</div>
+                <h1 className="text">Welcome to the Climate Bodega</h1>
+                <div className="text">Where climate data comes to life</div>
             </div>
             <div className="imgWrapper">
                 <img src="./images/c.png" alt="c"/>
