@@ -27,13 +27,13 @@
 .title {
     text-transform: uppercase;
     background: white;
-    padding: 20px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 
 .phrase {
     background: white;
-    padding: 20px;
+    padding: 10px 20px;
     border-radius: 5px;
 }
 

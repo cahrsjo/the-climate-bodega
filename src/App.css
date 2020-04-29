@@ -6,7 +6,8 @@
     padding: 20px 0;
     position: absolute;
     background: rgb(238,174,202);
-    background: radial-gradient(circle, rgb(0, 78, 167) 0%, rgb(107, 146, 255) 100%);
+    background: radial-gradient(circle, rgb(125,183,229) 0%, rgb(88, 156, 212) 100%);
+    border-bottom: 1px solid black;
 }
 
 .navigation > div {
