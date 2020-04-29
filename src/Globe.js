@@ -6,6 +6,24 @@ let mesh, moonMesh, moonGroup, textMesh, textGroup, scene;
 const geometry = new THREE.SphereGeometry(1.5, 32, 16);
 export class Globe extends Component {
   componentDidMount() {
+    this.init();
+  }
+
+  componentWillUnmount() {
+    this.stop();
+    this.mount.removeChild(this.renderer.domElement);
+    this.controls.dispose();
+  }
+
+  componentDidUpdate() {
+    this.init();
+  }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  init = () => {
     const width = this.mount.clientWidth;
     const height = this.mount.clientHeight;
     scene = new THREE.Scene();
@@ -48,14 +66,8 @@ export class Globe extends Component {
     const light = new THREE.PointLight('#fff', 1.5);
     light.position.fromArray([-2, 2, 4])
     scene.add(light);
-
   }
 
-  componentWillUnmount() {
-    this.stop();
-    this.mount.removeChild(this.renderer.domElement);
-    this.controls.dispose();
-  }
   start = () => {
     if (!this.frameId) {
       this.frameId = requestAnimationFrame(this.animate);
