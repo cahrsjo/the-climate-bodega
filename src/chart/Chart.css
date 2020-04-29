@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 80vh;
+    cursor: grab;
+    padding-top: 6vw;
+}
+
+.container .bubble,
+.container .line,
+.container .doughnut {
+    width: 100%;
+}
+
+.chartjs-size-monitor {
+    width: 100%;
+}

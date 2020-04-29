@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Globe } from './Globe';
-import { Chart } from './Chart';
+import { Chart } from './chart/Chart';
 import Home from './Home';
 import './App.css';
 import {
