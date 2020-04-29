@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { Globe } from './Globe';
+import { Chart } from './Chart';
 import Home from './Home';
 import './App.css';
 import {
@@ -22,6 +23,9 @@ export class App extends Component {
             <div>
               <Link to="/globe"><span role="img" aria-label="globe">🌍</span></Link>
             </div>
+            <div>
+              <Link to="/chart"><span aria-label="chart">Chart</span></Link>
+            </div>
           </nav>
   
           {/* A <Switch> looks through its children <Route>s and
@@ -29,6 +33,9 @@ export class App extends Component {
           <Switch>
             <Route path="/globe">
               <Globe />
+            </Route>
+            <Route path="/chart">
+              <Chart />
             </Route>
             <Route path="/">
               <Home />
