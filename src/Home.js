@@ -6,9 +6,9 @@ export default function Home() {
         <div className="wrapper">
             <div className="contents">
                 <div className="emojis">
-                    <span role="img" aria-label="chart">💨</span>
-                    <span role="img" aria-label="chart">➡️</span>
-                    <span role="img" aria-label="chart">📊</span>
+                    <span role="img" aria-label="dash" title="farts">💨</span>
+                    <span role="img" aria-label="arrow" title="into">➡️</span>
+                    <span role="img" aria-label="chart" title="charts">📊</span>
                 </div>
                 <h1 className="text">Welcome to the Climate Bodega</h1>
                 <div className="text">Where climate data comes to life</div>
