@@ -24,8 +24,8 @@
     width: 150px;
     font-family: fantasy;
     padding: 20px;
-    color: hotpink;
-    background: black;
+    color: black;
+    background: #7db7e5;
     font-weight: 700;
     text-transform: uppercase;
 }
