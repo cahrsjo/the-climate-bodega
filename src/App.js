@@ -36,11 +36,13 @@ export class App extends Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log({data});
+      this.setState({ data });
     });
   }
 
   render() {
+    const { data } = this.state;
+
     const TreesElement = () => {
       let pixels = 50;
       let images = [];
@@ -74,7 +76,7 @@ export class App extends Component {
               <Link to="/">Home</Link>
             </div>
             <div>
-              <Link to="/chart"><span aria-label="chart">Chart</span></Link>
+              <Link to="/chart"><span aria-label="chart">Charts</span></Link>
             </div>
             <div>
               <Link to="/globe"><span role="img" aria-label="globe">🌍</span></Link>
@@ -86,7 +88,7 @@ export class App extends Component {
               <Globe />
             </Route>
             <Route path="/chart">
-              <Chart />
+              <Chart data={data} />
             </Route>
             <Route path="/">
               <Home />

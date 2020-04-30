@@ -125,6 +125,9 @@ export class Chart extends Component {
   }
  
   render() {
+    const { data } = this.props;
+
+    console.log({chartData: data})
     return (
       <div
         className="container"
