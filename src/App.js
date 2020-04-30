@@ -21,13 +21,16 @@ export class App extends Component {
       data: [],
       subData: []
     }
+
+    this.fetchSubData = this.fetchSubData.bind(this);
   }
 
   async componentDidMount() {
-    const data = await this.fetchData();
-    const subData = await this.fetchSubData();
-    this.setState({data, subData})
+    await this.fetchData();
+    await this.fetchSubData();
+    // this.setState({data, subData})
   }
+  
 
   fetchData = async() => {
     return await fetch(`${INGRESS_URL}?cat=?`, {
@@ -37,18 +40,24 @@ export class App extends Component {
       },
     })
     .then(response => response.json())
-    .then(data => data);
+    .then(data => {
+      this.setState({data});
+      return data;
+    });
   }
 
-  fetchSubData = async() => {
-    return await fetch(`${INGRESS_URL}?cat=travel`, {
+  fetchSubData = async(cat = 'Facilities') => {
+    return await fetch(`${INGRESS_URL}?cat=${cat}`, {
       method: 'GET',
       headers: {
         'Authorization': 'Basic '+btoa('climatebodega:yolo123'),
       },
     })
     .then(response => response.json())
-    .then(data => data);
+    .then(data => {
+      this.setState({subData: data});
+      return data;
+    });
   }
 
   render() {
@@ -99,7 +108,7 @@ export class App extends Component {
               <Globe />
             </Route>
             <Route path="/chart">
-              <Chart data={data} subData={subData} />
+              <Chart data={data} subData={subData} fetchSubData={this.fetchSubData}/>
             </Route>
             <Route path="/">
               <Home />

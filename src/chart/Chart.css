@@ -11,8 +11,21 @@
 .container .doughnut {
     width: 100%;
     padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .chartjs-size-monitor {
     width: 100%;
+}
+
+.dropdown {
+    width: 150px;
+    font-family: fantasy;
+    padding: 20px;
+    color: hotpink;
+    background: black;
+    font-weight: 700;
+    text-transform: uppercase;
 }

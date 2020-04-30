@@ -8,6 +8,9 @@ export class Chart extends Component {
   constructor(props) {
     super(props);
     this.chartReference = React.createRef();
+    this.state = {
+      selectedCategory: 'Facilities',
+    }
   }
  
   componentDidMount() {
@@ -46,14 +49,41 @@ export class Chart extends Component {
       ]
     }
   }
+
+  getCountryData = data => {
+    const group = _.groupBy(data, 'country');
+    const temp = [];    
+    Object.keys(group).forEach(g => {
+      temp.push({
+        data: group[g].map(t => +t.sum),
+        label: g,
+        borderColor: `#${Math.floor(Math.random()*16777215).toString(16)}`,
+        fill: false
+      })
+    });
+    return {
+      labels: [...new Set(data.map(d => d.month))].sort(),
+      datasets: temp,
+    }
+  }
+
+  onChangeCat = async(event) => {
+    const { fetchSubData } = this.props;
+    this.setState({ selectedCategory: event.target.value});
+    await fetchSubData(event.target.value);
+  }
   render() {
     const { data, subData } = this.props;
-
-    console.log({subData, data});
+    const { selectedCategory } = this.state;
     
     let structuredData = {};
+    let countryData = {};
     if (data.length) {
       structuredData = this.getStructuredData(data);
+    }
+
+    if (subData.length) {
+      countryData = this.getCountryData(subData);
     }
 
     return (
@@ -96,11 +126,11 @@ export class Chart extends Component {
         <div className="line">
           <Line
             ref={this.chartReference}
-            data={structuredData}
+            data={countryData}
             options={{ maintainAspectRatio: false,
               title: {
                 display: true,
-                text: 'EMISSIONS PER CATEGORY PER COUNTRY',
+                text: `${selectedCategory.toUpperCase()} EMISSIONS PER COUNTRY`,
                 fontSize: 25,
                 fontFamily: 'fantasy'
                 },
@@ -125,7 +155,14 @@ export class Chart extends Component {
               }
             }
           />
+          <select className="dropdown" onChange={event => this.onChangeCat(event)}>
+            <option value="travel">Travel</option>
+            <option value="Facilities" selected>Facilities</option>
+            <option value="Expendables">Expendables</option>
+            <option value="Electronics">Electronics</option>
+          </select>
         </div>
+        
       </div>
     );
   }
