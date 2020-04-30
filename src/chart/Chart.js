@@ -57,8 +57,16 @@ export class Chart extends Component {
 
   getCountryData = data => {
     const group = _.groupBy(data, 'country');
-    const temp = [];    
+    const temp = [];
+    const months = [...(new Set(data.map(d => d.month)))].sort();
+
     Object.keys(group).forEach(g => {
+      months.forEach(month => {
+        const entry = group[g].find(val => val.month === month);
+        if (!entry) {
+          group[g].push({month, sum: 0});
+        }
+      })
       temp.push({
         data: group[g].sort(this.sortFn).map(t => +t.sum),
         label: g,
