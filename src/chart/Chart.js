@@ -16,32 +16,37 @@ export class Chart extends Component {
   componentDidMount() {
     console.log(this.chartReference); // returns a Chart.js instance reference
   }
+
+  sortFn = (a, b) => {
+    return a.month > b.month ? 1 : -1;
+  }
  
   getStructuredData = data => {
     const group = _.groupBy(data, 'category');
+    console.log(group['travel']);
     return {
       labels: [...new Set(data.map(d => d.month))].sort(),
       datasets: [
         {
-          data: group['travel'].map(t => +t.sum),
+          data: group['travel'].sort(this.sortFn).map(t => +t.sum),
           label: group['travel'][0].category,
           borderColor: "red",
           fill: false
         },
         {
-          data: group['Electronics'].map(t => +t.sum),
+          data: group['Electronics'].sort(this.sortFn).map(t => +t.sum),
           label: group['Electronics'][0].category,
           borderColor: "green",
           fill: false
         },
         {
-          data: group['Facilities'].map(t => +t.sum),
+          data: group['Facilities'].sort(this.sortFn).map(t => +t.sum),
           label: group['Facilities'][0].category,
           borderColor: "blue",
           fill: false
         },
         {
-          data: group['Expendables'].map(t => +t.sum),
+          data: group['Expendables'].sort(this.sortFn).map(t => +t.sum),
           label: group['Expendables'][0].category,
           borderColor: "yellow",
           fill: false
@@ -55,7 +60,7 @@ export class Chart extends Component {
     const temp = [];    
     Object.keys(group).forEach(g => {
       temp.push({
-        data: group[g].map(t => +t.sum),
+        data: group[g].sort(this.sortFn).map(t => +t.sum),
         label: g,
         borderColor: `#${Math.floor(Math.random()*16777215).toString(16)}`,
         fill: false
