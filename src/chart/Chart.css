@@ -3,7 +3,6 @@
     flex-direction: row;
     width: 100vw;
     height: 80vh;
-    cursor: grab;
     padding-top: 6vw;
 }
 
@@ -11,6 +10,7 @@
 .container .line,
 .container .doughnut {
     width: 100%;
+    padding: 0 50px;
 }
 
 .chartjs-size-monitor {

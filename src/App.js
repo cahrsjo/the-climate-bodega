@@ -18,30 +18,41 @@ export class App extends Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      subData: []
     }
   }
 
-  componentDidMount() {
-    // Fetch data and set state here
-    this.fetchData();
+  async componentDidMount() {
+    const data = await this.fetchData();
+    const subData = await this.fetchSubData();
+    this.setState({data, subData})
   }
 
   fetchData = async() => {
-    return await fetch(INGRESS_URL, {
+    return await fetch(`${INGRESS_URL}?cat=?`, {
       method: 'GET',
       headers: {
         'Authorization': 'Basic '+btoa('climatebodega:yolo123'),
       },
     })
     .then(response => response.json())
-    .then(data => {
-      this.setState({ data });
-    });
+    .then(data => data);
+  }
+
+  fetchSubData = async() => {
+    return await fetch(`${INGRESS_URL}?cat=travel`, {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Basic '+btoa('climatebodega:yolo123'),
+      },
+    })
+    .then(response => response.json())
+    .then(data => data);
   }
 
   render() {
-    const { data } = this.state;
+    const { data, subData } = this.state;
 
     const TreesElement = () => {
       let pixels = 50;
@@ -88,7 +99,7 @@ export class App extends Component {
               <Globe />
             </Route>
             <Route path="/chart">
-              <Chart data={data} />
+              <Chart data={data} subData={subData} />
             </Route>
             <Route path="/">
               <Home />
